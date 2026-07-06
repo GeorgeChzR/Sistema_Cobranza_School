@@ -256,6 +256,14 @@ def resumen_indicadores(estado: pd.DataFrame, fecha_corte=None) -> dict:
     colores_vencido = ["Amarillo", "Naranja", "Rojo"]
     alumnos_adeudo_vencido = sum(conteo.get(c, 0) for c in colores_vencido)
     pct_adeudo_vencido = round(100 * alumnos_adeudo_vencido / total, 1)
+    saldo_vencido = round(
+        float(
+            estado.loc[estado["Semáforo"].isin(colores_vencido), "Saldo"]
+            .clip(lower=0)
+            .sum()
+        ),
+        2,
+    )
 
     return {
         "fecha_corte": pd.Timestamp(fecha_corte).date() if fecha_corte else pd.Timestamp.today().date(),
@@ -264,6 +272,7 @@ def resumen_indicadores(estado: pd.DataFrame, fecha_corte=None) -> dict:
         "alumnos_con_adeudo_vencido": alumnos_adeudo_vencido,
         "porcentaje_adeudo_vencido": pct_adeudo_vencido,
         "saldo_total": round(float(estado["Saldo"].clip(lower=0).sum()), 2),
+        "saldo_vencido": saldo_vencido,
         "conteo": {c: conteo.get(c, 0) for c in ["Verde", "Amarillo", "Naranja", "Rojo"]},
         "porcentaje": {c: pct(c) for c in ["Verde", "Amarillo", "Naranja", "Rojo"]},
         "saldo_por_color": {c: round(saldo_por_color.get(c, 0.0), 2) for c in ["Verde", "Amarillo", "Naranja", "Rojo"]},

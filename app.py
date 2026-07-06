@@ -419,7 +419,7 @@ with tab_cartera:
         "Con Adeudo Vencido",
         f"{ind['alumnos_con_adeudo_vencido']} ({ind['porcentaje_adeudo_vencido']}%)",
     )
-    c3.metric("Saldo pendiente", f"${ind['saldo_total']:,.0f}")
+    c3.metric("Saldo vencido", f"${ind['saldo_vencido']:,.0f}")
     c4.metric("En Rojo", ind["conteo"].get("Rojo", 0))
 
     st.subheader("Distribución de cartera")

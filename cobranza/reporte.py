@@ -79,7 +79,7 @@ def _hoja_resumen(writer, ind: dict) -> None:
         ["Fecha de corte", ind.get("fecha_corte")],
         ["Total de alumnos", ind.get("total_alumnos")],
         ["Alumnos con adeudo vencido", f"{ind.get('alumnos_con_adeudo_vencido', 0)} ({ind.get('porcentaje_adeudo_vencido', 0)}%)"],
-        ["Saldo total pendiente", ind.get("saldo_total")],
+        ["Saldo vencido", ind.get("saldo_vencido")],
         ["", ""],
         ["Semáforo", "Alumnos", "% Cartera", "Saldo"],
     ]

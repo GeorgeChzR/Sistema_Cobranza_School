@@ -65,7 +65,7 @@ def main() -> None:
     print("=" * 60)
     print(f"  Total alumnos      : {ind.get('total_alumnos', 0)}")
     print(f"  Con adeudo vencido : {ind.get('alumnos_con_adeudo_vencido', 0)} ({ind.get('porcentaje_adeudo_vencido', 0)}%)")
-    print(f"  Saldo pendiente    : ${ind.get('saldo_total', 0):,.2f}")
+    print(f"  Saldo vencido      : ${ind.get('saldo_vencido', 0):,.2f}")
     print("-" * 60)
     for c in ["Verde", "Amarillo", "Naranja", "Rojo"]:
         n = ind.get("conteo", {}).get(c, 0)
