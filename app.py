@@ -227,17 +227,17 @@ def _pagina_login() -> None:
         else:
             st.error("Usuario o contraseña incorrectos, o cuenta inactiva.")
 
-    with st.expander("Primera vez: crear administrador"):
-        st.markdown(
-            "Si no hay usuarios, configura estas variables en **Streamlit Secrets** "
-            "(Cloud) o en tu archivo **`.env`** (local):\n\n"
-            "```\n"
-            "ADMIN_USUARIO=admin\n"
-            "ADMIN_NOMBRE=Nombre del administrador\n"
-            "ADMIN_PASSWORD=tu_contraseña_segura\n"
-            "```\n\n"
-            "Al recargar la app, el administrador se crea automáticamente."
-        )
+    #with st.expander("Primera vez: crear administrador"):
+    #    st.markdown(
+    #        "Si no hay usuarios, configura estas variables en **Streamlit Secrets** "
+    #        "(Cloud) o en tu archivo **`.env`** (local):\n\n"
+    #        "```\n"
+    #        "ADMIN_USUARIO=admin\n"
+    #        "ADMIN_NOMBRE=Nombre del administrador\n"
+    #        "ADMIN_PASSWORD=tu_contraseña_segura\n"
+    #        "```\n\n"
+    #        "Al recargar la app, el administrador se crea automáticamente."
+    #    )
 
 
 def _sidebar(usuario: dict) -> tuple[object | None, date]:
