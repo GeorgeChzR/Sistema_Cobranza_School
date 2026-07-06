@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.env
+.streamlit/secrets.toml
+
+# Reportes y archivos temporales generados
+reporte_cobranza_*.xlsx
+_subida_temporal.*
+
+# Build ejecutable
+build/
+dist/

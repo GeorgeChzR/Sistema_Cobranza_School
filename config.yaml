@@ -1,0 +1,50 @@
+# Configuración del Sistema de Cobranza (Meraki Talent Institute)
+# Basado en: MTI-PRO-ADM-2026-003 "Gestión Integral de Cartera"
+
+# Día del mes en que vence la colegiatura cuando el dato no viene en el archivo.
+dia_vencimiento_default: 10
+
+# Umbrales de semaforización (días de atraso respecto a la fecha de corte).
+# Regla de la política:
+#   Verde   -> antes del vencimiento (preventivo)
+#   Amarillo-> 1 a 30 días
+#   Naranja -> 31 a 60 días
+#   Rojo    -> más de 60 días
+semaforo:
+  amarillo_min: 1
+  amarillo_max: 30
+  naranja_min: 31
+  naranja_max: 60
+  rojo_min: 61
+
+# Responsable de la gestión según el color (sección 5 y 6 de la política).
+responsables:
+  Verde: Asistente Administrativa
+  Amarillo: Asistente Administrativa
+  Naranja: Directora del Plantel
+  Rojo: Administración General
+
+# Acción sugerida por etapa (procedimiento, sección 6).
+acciones:
+  Verde: "Recordatorio previo al vencimiento y confirmación de formas de pago."
+  Amarillo: "Llamada + WhatsApp + correo. Registrar compromiso de pago en bitácora."
+  Naranja: "Citar a la familia, entrevista y Minuta de Diagnóstico."
+  Rojo: "Revisión de expediente y resolución administrativa (CEP / SATSE / baja con condonación)."
+
+# Reglas de escalamiento (sección 9): días máximos permitidos en cada color.
+escalamiento:
+  amarillo_max_dias: 30
+  naranja_max_dias: 30
+  rojo_max_dias_sin_resolucion: 15
+
+# Conceptos que se consideran adeudo de cartera (para filtrar otros cargos).
+# Deja la lista vacía para incluir TODOS los conceptos.
+conceptos_incluidos: []
+
+# Cómo se aplican los pagos a los cargos:
+#   cuenta_fifo -> primero por Cuenta por Cobrar / Referencia; el resto FIFO
+# MongoDB Atlas — bitácora compartida entre computadoras
+mongodb:
+  database: meraki_cobranza
+  collection: bitacora_seguimientos
+
